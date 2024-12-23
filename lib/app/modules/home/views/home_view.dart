@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:ird_skill_task/app/utils/app_assets.dart';
 import 'package:ird_skill_task/app/utils/app_color.dart';
 
 import '../../../widget/app_bar.dart';
@@ -42,6 +44,23 @@ class HomeView extends GetView<HomeController> {
                         size: 16,
                         color: AppColor.grey,
                       ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Container(
+                  height: 48,
+                  width: 48,
+                  decoration: BoxDecoration(
+                      gradient: GradientColor.gradientColor,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Center(
+                    child: SvgPicture.asset(
+                      AppAssets.menu,
+                      height: 16,
+                      width: 16,
                     ),
                   ),
                 ),
