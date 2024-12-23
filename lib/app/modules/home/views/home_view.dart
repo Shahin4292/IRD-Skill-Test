@@ -7,6 +7,7 @@ import 'package:ird_skill_task/app/utils/app_assets.dart';
 import 'package:ird_skill_task/app/utils/app_color.dart';
 
 import '../../../widget/app_bar.dart';
+import '../../../widget/text.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -76,6 +77,8 @@ class HomeView extends GetView<HomeController> {
                   () => SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: List.generate(
                         homeController.buttonName.length,
                         (index) {
@@ -117,6 +120,30 @@ class HomeView extends GetView<HomeController> {
                       ),
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: 27,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ModifiedText(
+                      text: 'Near from you',
+                      size: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                    InkWell(
+                      splashColor: Colors.grey,
+                      borderRadius: BorderRadius.circular(10),
+                      child: ModifiedText(
+                        text: 'See more',
+                        size: 12,
+                        fontWeight: FontWeight.w400,
+                        color: AppColor.darkGrey,
+                      ),
+                    )
+                  ],
                 )
               ],
             ),
