@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ird_skill_task/app/utils/app_color.dart';
 
-import '../../../widget/text.dart';
+import '../../../widget/app_bar.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -10,52 +12,44 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
+        body: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20),
+        child: Column(
           children: [
-            ModifiedText(
-              text: 'Location',
-              color: Colors.black,
-              size: 12,
-              fontWeight: FontWeight.w400,
-            ),
+            AppsBar(),
             SizedBox(
-              height: 8,
+              height: 22,
             ),
             Row(
               children: [
-                ModifiedText(
-                  text: 'Jakarta',
-                  color: Colors.black,
-                  size: 20,
-                  fontWeight: FontWeight.w500,
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      fillColor: AppColor.whiteSmoke,
+                      filled: true,
+                      hintText: 'Search address, or near you',
+                      hintStyle: TextStyle(
+                          color: AppColor.darkGrey,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none),
+                      prefixIcon: Icon(
+                        CupertinoIcons.search,
+                        size: 16,
+                        color: AppColor.grey,
+                      ),
+                    ),
+                  ),
                 ),
-                Icon(Icons.arrow_downward)
               ],
             ),
           ],
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.notifications,
-              color: Colors.black,
-              size: 15,
-            ),
-          ),
-        ],
       ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
+    ));
   }
 }
