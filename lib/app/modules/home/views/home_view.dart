@@ -144,7 +144,95 @@ class HomeView extends GetView<HomeController> {
                       ),
                     )
                   ],
-                )
+                ),
+                SizedBox(
+                  height: 26,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: homeController.imageList.map((image) {
+                      return GestureDetector(
+                        onTap: () {
+                          // Navigate to the details screen
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => ImageDetailsScreen(
+                          //       imageUrl: image["url"]!,
+                          //       title: image["title"]!,
+                          //       description: image["description"]!,
+                          //     ),
+                          //   ),
+                          // );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          // child: ClipRRect(
+                          //   borderRadius: BorderRadius.circular(10),
+                          //   child: Image.network(
+                          //     image["url"]!,
+                          //     width: 222,
+                          //     height: 272,
+                          //     fit: BoxFit.cover,
+                          //   ),
+                          // ),
+                          child: Container(
+                            height: 272,
+                            width: 222,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                  image["url"]!,
+                                ),
+                                fit: BoxFit
+                                    .cover, // Adjust image to fill the container
+                              ),
+                            ),
+                            child: Stack(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 20, left: 125),
+                                  child: Container(
+                                    height: 24,
+                                    width: 73,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: AppColor.cyan,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        SvgPicture.asset(
+                                          AppAssets.locationsIcon,
+                                          height: 12,
+                                          width: 10,
+                                        ),
+                                        SizedBox(
+                                          width: 4,
+                                        ),
+                                        ModifiedText(
+                                          text: '1.8 km',
+                                          size: 12,
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.white,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
               ],
             ),
           ),
