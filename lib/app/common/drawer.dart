@@ -8,11 +8,14 @@ class CustomDrawer extends StatelessWidget {
         color: Colors.blue, // Background color for the drawer
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Drawer items
             Expanded(
               child: ListView(
                 children: [
+                  SizedBox(
+                    height: 150,
+                  ),
                   _buildDrawerItem(Icons.home, 'Home', true),
                   _buildDrawerItem(Icons.person, 'Profile', false),
                   _buildDrawerItem(Icons.location_on, 'Nearby', false),
@@ -34,7 +37,10 @@ class CustomDrawer extends StatelessWidget {
 
   Widget _buildDrawerItem(IconData icon, String title, bool isSelected) {
     return Container(
-      color: isSelected ? Colors.white : Colors.transparent,
+      decoration: BoxDecoration(
+          color: isSelected ? Colors.white : Colors.transparent,
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(30), bottomRight: Radius.circular(30))),
       child: ListTile(
         leading: Icon(icon, color: isSelected ? Colors.blue : Colors.white),
         title: Text(
