@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:ird_skill_task/app/utils/app_assets.dart';
 import 'package:ird_skill_task/app/utils/app_color.dart';
 
+import '../../../utils/global_image.dart';
 import '../../../widget/app_bar.dart';
 import '../../../widget/text.dart';
 import '../controllers/home_controller.dart';
@@ -151,7 +152,7 @@ class HomeView extends GetView<HomeController> {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: homeController.imageList.map((image) {
+                    children: imageList.map((image) {
                       return GestureDetector(
                         onTap: () {
                           // Navigate to the details screen
@@ -193,7 +194,8 @@ class HomeView extends GetView<HomeController> {
                             child: Stack(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 20, left: 125),
+                                  padding:
+                                      const EdgeInsets.only(top: 20, left: 125),
                                   child: Container(
                                     height: 24,
                                     width: 73,
@@ -224,13 +226,98 @@ class HomeView extends GetView<HomeController> {
                                       ],
                                     ),
                                   ),
-                                )
+                                ),
+                                Positioned(
+                                  left: 20,
+                                  bottom: 40,
+                                  child: Column(
+                                    children: [
+                                      ModifiedText(
+                                        text: 'Dreamsville House',
+                                        size: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                      SizedBox(
+                                        width: 8,
+                                      ),
+                                      ModifiedText(
+                                        text: 'Jl. Sultan Iskandar Muda',
+                                        size: 12,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
                           ),
                         ),
                       );
                     }).toList(),
+                  ),
+                ),
+                SizedBox(
+                  height: 32,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ModifiedText(
+                      text: 'Best for you',
+                      size: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                    InkWell(
+                      splashColor: Colors.grey,
+                      borderRadius: BorderRadius.circular(10),
+                      child: ModifiedText(
+                        text: 'See more',
+                        size: 12,
+                        fontWeight: FontWeight.w400,
+                        color: AppColor.darkGrey,
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 24,
+                ),
+                // Container(
+                //   width: MediaQuery.sizeOf(context).width,
+                //   height: MediaQuery.sizeOf(context).height,
+                //   color: Colors.red,
+                //   child: Column(
+                //     mainAxisSize: MainAxisSize.min,
+                //     children: [
+                //       Text("data")
+                //     ],
+                //   ),
+                // )
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: imageItem.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 74,
+                              height: 70,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Image.network(
+                                imageItem[index],
+                              ),
+                            ),
+                            Text("data")
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
