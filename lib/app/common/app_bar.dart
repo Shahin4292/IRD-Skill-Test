@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ird_skill_task/app/common/text.dart';
 import 'package:ird_skill_task/app/utils/app_color.dart';
-import 'package:ird_skill_task/app/widget/text.dart';
 
 import '../utils/app_assets.dart';
 
@@ -46,22 +46,7 @@ class AppsBar extends StatelessWidget {
             ),
           ],
         ),
-        Container(
-          height: 22,
-          width: 17,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(AppAssets.notifications),
-            ),
-          ),
-          child: Align(
-              alignment: Alignment.topRight,
-              child: Image.asset(
-                AppAssets.ellipse,
-                height: 8,
-                width: 8,
-              )),
-        )
+        GestureDetector(child: SvgPicture.asset(AppAssets.notifications)),
       ],
     );
   }
